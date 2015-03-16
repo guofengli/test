@@ -41,8 +41,9 @@ public class HBasePuts implements Callable<String>{
 			puts.add(putData);
 		}
 		table.put(puts);
+		table.flushCommits();
 		table.close();
-		
+		System.gc();
 		return null;
 	}
 
