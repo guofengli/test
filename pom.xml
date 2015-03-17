@@ -21,6 +21,11 @@
 			<version>2.5.0</version>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-hdfs</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-client</artifactId>
 			<version>0.98.6-hadoop2</version>
@@ -31,11 +36,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.2.1</version>
+				<version>2.2</version>
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.jd.miningsales.quartz.ProductInfoQuartzTest</mainClass>
+							<mainClass>com.elex.threadpool.hbase.ThreadPool</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

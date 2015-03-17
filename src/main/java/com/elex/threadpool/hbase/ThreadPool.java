@@ -44,7 +44,7 @@ public class ThreadPool {
 			int status = input.read(bytes) ;
 			String tmpStr = null;
 			ArrayList<String> lines = new ArrayList<String>();
-			int putSize = 100000;
+			int putSize = 50000;
 			int total = 0;
 			while((tmpStr = input.readLine()) != null){
 				lines.add(tmpStr);
