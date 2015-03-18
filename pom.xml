@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>hbasetest</groupId>
 	<artifactId>hbasetest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-mapreduce</version>
 	<packaging>jar</packaging>
 
 	<name>hbasetest</name>
@@ -30,6 +30,17 @@
 			<artifactId>hbase-client</artifactId>
 			<version>0.98.6-hadoop2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-hadoop2-compat</artifactId>
+			<version>0.98.6-hadoop2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-server</artifactId>
+			<version>0.98.6-hadoop2</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -40,7 +51,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.elex.threadpool.hbase.ThreadPool</mainClass>
+							<mainClass>com.elex.hbase.WordCountHbase</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

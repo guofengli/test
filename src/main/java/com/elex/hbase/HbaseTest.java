@@ -67,7 +67,7 @@ public class HbaseTest {
 //		System.out.println("put data success");
 	}
 	
-	//获取指定表中的指定行键的值
+	//锟斤拷取指锟斤拷锟斤拷锟叫碉拷指锟斤拷锟叫硷拷锟斤拷值
 	public static void get(String tableName, String row) throws IOException{
 		HTable htable = new HTable(conf, tableName);
 		Get getData = new Get(Bytes.toBytes(row));
@@ -76,7 +76,7 @@ public class HbaseTest {
 		htable.close();
 	}
 	
-	//扫描整个表中的数据，输出时会按照行健作为一个result
+	//扫锟斤拷锟斤拷锟斤拷锟斤拷锟叫碉拷锟斤拷锟捷ｏ拷锟斤拷锟绞憋拷岚达拷锟斤拷薪锟斤拷锟轿伙拷锟絩esult
 	public static void scan(String tableName) throws IOException{
 		HTable htable = new HTable(conf, tableName);
 		Scan scanData = new Scan();
@@ -87,7 +87,7 @@ public class HbaseTest {
 		htable.close();
 	}
 	
-	//获取指定表中，指定列族中指定列的值
+	//锟斤拷取指锟斤拷锟斤拷锟叫ｏ拷指锟斤拷锟斤拷锟斤拷锟斤拷指锟斤拷锟叫碉拷值
 	public static void scan(String tableName, String column, String columnFamily) throws IOException{
 		HTable htable = new HTable(conf,tableName);
 		ResultScanner rs = htable.getScanner(Bytes.toBytes(columnFamily), Bytes.toBytes(column));
@@ -97,13 +97,13 @@ public class HbaseTest {
 		htable.close();
 	}
 	
-	//向已经存在的表中增加一个列
+	//锟斤拷锟窖撅拷锟斤拷锟节的憋拷锟斤拷锟斤拷锟斤拷一锟斤拷锟斤拷
 	public static void addFamily(String tableName, String columnFamily) throws IOException{	
 		HBaseAdmin admin = new HBaseAdmin(conf);
 		admin.addColumn(tableName, new HColumnDescriptor(columnFamily));
 	}
 	
-	//删除表中的某一个列，如果存在就直接删除，如果不存在则返回异常
+	//删锟斤拷锟斤拷锟叫碉拷某一锟斤拷锟叫ｏ拷锟斤拷锟斤拷锟斤拷诰锟街憋拷锟缴撅拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟津返伙拷锟届常
 	public static void deleteFamily(String tableName, String columnFamily) throws MasterNotRunningException, ZooKeeperConnectionException, IOException{
 		HBaseAdmin admin = new HBaseAdmin(conf);
 		
@@ -122,7 +122,7 @@ public class HbaseTest {
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String tableName = "maphbase_test";
+		String tableName = "maptfidfTest";
 		String columnFamily="word_tfidf";
 		String []columnFamilies = {"word_tfidf"};
 		HbaseTest.creat(tableName, columnFamilies);
