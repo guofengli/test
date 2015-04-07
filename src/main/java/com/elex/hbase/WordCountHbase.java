@@ -63,14 +63,13 @@ public class WordCountHbase {
 	    Job job = Job.getInstance(conf, "mapredeuce hbase job");   
 	    job.setJarByClass(WordCountHbase.class);   
 	    
-	    
 	    // 设置 Map 和 Reduce 处理类   
 	    job.setMapperClass(TFIDFMap.class);   
 	    job.setReducerClass(TFIDFReduce.class);   
 	   
 	    // 设置输出类型   
 	    job.setMapOutputKeyClass(Text.class);   
-	    job.setMapOutputValueClass(Text.class);   
+	    job.setMapOutputValueClass(Put.class);   
 	   
 	    // 设置输入和输出格式   
 	    job.setInputFormatClass(TextInputFormat.class);   

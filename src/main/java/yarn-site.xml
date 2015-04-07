@@ -34,27 +34,27 @@
   </property>
   <property>
   	<name>yarn.resourcemanager.hostname</name>
-  	<value>10.1.20.241</value>
+  	<value>namenode</value>
   </property>
   <property>
 	<name>yarn.resourcemanager</name>
-	<value>10.1.20.241:8032</value>
+	<value>namenode:8032</value>
   </property>
   <property>
   	<name>yarn.resourcemanager.scheduler.address</name>
-  	<value>10.1.20.241:8030</value>
+  	<value>namenode:8030</value>
   </property>
   <property>
   	<name>yarn.resourcemanager.webapp.address</name>
-  	<value>10.1.20.241:8088</value>
+  	<value>namenode:8088</value>
   </property>
   <property>
   	<name>yarn.resourcemanager.resource-tracker.address</name>
-  	<value>10.1.20.241:8031</value>
+  	<value>namenode:8031</value>
   </property>
   <property>
   	<name>yarn.resourcemanager.admin.address</name>
-  	<value>10.1.20.241:8033</value>
+  	<value>namenode:8033</value>
   </property>
   <property>
     <description>List of directories to store localized files in.</description>
@@ -80,7 +80,7 @@
  <property>
    <description>The hostname of the Timeline service web application.</description>
      <name>yarn.timeline-service.hostname</name>
-     <value>10.1.20.241</value>
+     <value>namenode</value>
  </property>
   <property>
     <description>Classpath for typical applications.</description>

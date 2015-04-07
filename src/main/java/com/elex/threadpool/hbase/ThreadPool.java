@@ -30,14 +30,14 @@ public class ThreadPool {
 		conf = new Configuration();
 		fs = FileSystem.get(URI.create(hdfsURL), conf);
 	}
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		long startTime = System.currentTimeMillis();	
-		ExecutorService service = new ThreadPoolExecutor(8, 20, 60, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
+		ExecutorService service = new ThreadPoolExecutor(8, 20, 10, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
 			List<Future<String>> jobs = new ArrayList<Future<String>>();
 			FileInputStream fis = null;
 			conf = new Configuration();
 			FileSystem fs = FileSystem.get(URI.create(hdfsURL), conf);
-			Path path = new Path("/tfidf/result/tfidf/part-r-00000");
+			Path path = new Path("/tfidf/result/tfidf_2/part-r-00000");
 			FSDataInputStream input = fs.open(path);
 			byte[] bytes = new byte[1024];
 			StringBuffer sb = new StringBuffer();

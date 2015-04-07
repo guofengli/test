@@ -67,7 +67,7 @@ public class HbaseTest {
 //		System.out.println("put data success");
 	}
 	
-	//��ȡָ�����е�ָ���м���ֵ
+	//根据rowkey获取数据
 	public static void get(String tableName, String row) throws IOException{
 		HTable htable = new HTable(conf, tableName);
 		Get getData = new Get(Bytes.toBytes(row));
@@ -76,7 +76,7 @@ public class HbaseTest {
 		htable.close();
 	}
 	
-	//ɨ���������е����ݣ����ʱ�ᰴ���н���Ϊһ��result
+	//运用scan扫描全表
 	public static void scan(String tableName) throws IOException{
 		HTable htable = new HTable(conf, tableName);
 		Scan scanData = new Scan();
@@ -87,7 +87,7 @@ public class HbaseTest {
 		htable.close();
 	}
 	
-	//��ȡָ�����У�ָ��������ָ���е�ֵ
+	//查询范围的keyrow
 	public static void scan(String tableName, String column, String columnFamily) throws IOException{
 		HTable htable = new HTable(conf,tableName);
 		ResultScanner rs = htable.getScanner(Bytes.toBytes(columnFamily), Bytes.toBytes(column));
@@ -97,13 +97,13 @@ public class HbaseTest {
 		htable.close();
 	}
 	
-	//���Ѿ����ڵı�������һ����
+	//对制定的表增加一个列族
 	public static void addFamily(String tableName, String columnFamily) throws IOException{	
 		HBaseAdmin admin = new HBaseAdmin(conf);
 		admin.addColumn(tableName, new HColumnDescriptor(columnFamily));
 	}
 	
-	//ɾ�����е�ĳһ���У�������ھ�ֱ��ɾ��������������򷵻��쳣
+	//删除一个列族
 	public static void deleteFamily(String tableName, String columnFamily) throws MasterNotRunningException, ZooKeeperConnectionException, IOException{
 		HBaseAdmin admin = new HBaseAdmin(conf);
 		
@@ -122,7 +122,7 @@ public class HbaseTest {
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String tableName = "maptfidfTest";
+		String tableName = "maphbase_test";
 		String columnFamily="word_tfidf";
 		String []columnFamilies = {"word_tfidf"};
 		HbaseTest.creat(tableName, columnFamilies);
@@ -136,8 +136,7 @@ public class HbaseTest {
 //		HbaseTest.deleteFamily(tableName, columnFamily);
 //		HbaseTest.getFamilys(tableName, columnFamily);
 //		readFileByLines("C:\\Users\\Administrator\\Downloads\\part-r-00000 (6)");
-		
-	}
+		}
 	
 	public static void readFileByLines(String fileName) {  
         File file = new File(fileName);  
