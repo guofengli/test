@@ -20,6 +20,11 @@ import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.ResultScanner;
 import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.filter.BinaryComparator;
+import org.apache.hadoop.hbase.filter.CompareFilter;
+import org.apache.hadoop.hbase.filter.RegexStringComparator;
+import org.apache.hadoop.hbase.filter.RowFilter;
+import org.apache.hadoop.hbase.protobuf.generated.FilterProtos.Filter;
 import org.apache.hadoop.hbase.util.Bytes;
 
 public class HbaseTest {
@@ -80,6 +85,16 @@ public class HbaseTest {
 	public static void scan(String tableName) throws IOException{
 		HTable htable = new HTable(conf, tableName);
 		Scan scanData = new Scan();
+		//scan查询起始key,默认情况是0
+		scanData.setStartRow(Bytes.toBytes("126614527_1052515_3813D6D7"));
+		//scan查询最终key,不包括该key
+		scanData.setStopRow(Bytes.toBytes("126614527_1052515_381B5FEF"));
+		//过滤器读取以指定字符结束的行
+		RowFilter filter2=new RowFilter(  
+		        CompareFilter.CompareOp.EQUAL,  
+		        new RegexStringComparator(".*3813D6D7$"));
+		scanData.setFilter(filter2);
+		
 		ResultScanner rs = htable.getScanner(scanData);
 		for(Result result:rs){
 			System.out.println(result);
@@ -125,12 +140,12 @@ public class HbaseTest {
 		String tableName = "maphbase_test";
 		String columnFamily="word_tfidf";
 		String []columnFamilies = {"word_tfidf"};
-		HbaseTest.creat(tableName, columnFamilies);
+//		HbaseTest.creat(tableName, columnFamilies);
 //		HbaseTest.put(tableName, "liguofeng", columnFamily, "c2", "hbase test three");
 		
 		
 //		HbaseTest.get(tableName, "liguofeng");
-//		HbaseTest.scan(tableName);
+		HbaseTest.scan(tableName);
 //		HbaseTest.scan(tableName,"c2",columnFamily);
 //		HbaseTest.addFamily(tableName, columnFamily);
 //		HbaseTest.deleteFamily(tableName, columnFamily);

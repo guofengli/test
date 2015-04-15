@@ -51,6 +51,11 @@
 			<artifactId>hbase-common</artifactId>
 			<version>0.98.6-cdh5.3.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-it</artifactId>
+			<version>0.98.6-cdh5.3.2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -61,7 +66,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.elex.hbase.MapreduceHBase</mainClass>
+							<mainClass>com.elex.hbase.PutHBase</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
